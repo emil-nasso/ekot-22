@@ -2,6 +2,9 @@
 $dom = new DOMDocument();
 $dom->loadXML(file_get_contents("https://api.sr.se/api/rss/pod/3795/"));
 
+$title = $dom->getElementsByTagName('title')->item(1);
+$title->textContent = '[22:00 only] ' . $title->textContent;
+
 $nodesToDelete = [];
 foreach($dom->getElementsByTagName('item') as $seg)
 {
